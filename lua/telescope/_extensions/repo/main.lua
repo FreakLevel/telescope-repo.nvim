@@ -178,9 +178,8 @@ local function call_picker(list_opts, command, prompt_title_supplement, user_opt
 
                     if type == "default" then
                         actions._close(prompt_bufnr, false)
-                        vim.schedule(function()
-                            project_files(vim.tbl_extend("force", user_opts, { cwd = dir }))
-                        end)
+                        vim.cmd("tabe " .. dir)
+                        vim.cmd("tcd " .. dir)
                     end
                     if type == "vertical" then
                         actions._close(prompt_bufnr, false)
