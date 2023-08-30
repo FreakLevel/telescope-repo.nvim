@@ -177,6 +177,7 @@ local function call_picker(list_opts, command, prompt_title_supplement, user_opt
                     end
 
                     if type == "default" then
+                        actions.close(prompt_bufnr, false)
                         vim.cmd("tcd " .. dir)
                     end
                     if type == "vertical" then
