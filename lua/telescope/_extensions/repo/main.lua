@@ -178,21 +178,9 @@ local function call_picker(list_opts, command, prompt_title_supplement, user_opt
 
                     if type == "default" then
                         actions.close(prompt_bufnr, false)
-                        vim.cmd("tcd " .. dir)
+                        vim.api.nvim_set_current_dir(dir)
+                        require("telescope.builtin").find_files({})
                         return
-                        -- local doc = search_markdown_readme(dir)
-                        -- if doc then
-                        --     return utils.find_markdown_previewer_for_document(doc.filename)
-                        -- end
-                        -- doc = search_generic_readme(dir)
-                        -- if not doc then
-                        --     -- TODO: doc may be previewed in a plain text. Can I use syntax highlight?
-                        --     doc = search_doc(dir)
-                        -- end
-                        -- if not doc then
-                        --     return { "echo", "" }
-                        -- end
-                        -- return utils.find_generic_previewer_for_document(doc.filename)
                     end
                     if type == "vertical" then
                         actions._close(prompt_bufnr, false)
